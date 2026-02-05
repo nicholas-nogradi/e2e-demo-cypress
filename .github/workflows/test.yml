@@ -66,6 +66,4 @@ jobs:
 
       - name: Publish to Chromatic
         run: |
-          yarn chromatic
-        env:
-          STORYBOOK_FIGMA_ACCESS_TOKEN: ${{ secrets.STORYBOOK_FIGMA_ACCESS_TOKEN }}
+          npx chromatic@latest --archive-from cypress/downloads/chromatic-archives -t=chpt_d7c4e619d01cb97
