@@ -28,11 +28,22 @@ jobs:
         run: |
           yarn test:ci
 
+      - name: Check if chromatic archives exist
+        run: |
+          if [ -d "cypress/downloads/chromatic-archives" ]; then
+            echo "Archives found"
+            ls -la cypress/downloads/chromatic-archives/
+          else
+            echo "No archives directory found"
+            mkdir -p cypress/downloads/chromatic-archives
+          fi
+
       - name: Upload chromatic archives
         uses: actions/upload-artifact@v4
         with:
           name: chromatic-archives
           path: cypress/downloads/chromatic-archives
+          if-no-files-found: warn
 
   chromatic-deployment:
     needs: test
