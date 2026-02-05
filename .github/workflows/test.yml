@@ -65,5 +65,10 @@ jobs:
           path: cypress/downloads/chromatic-archives
 
       - name: Publish to Chromatic
-        run: |
-          npx chromatic@latest --archive-from cypress/downloads/chromatic-archives -t=chpt_d7c4e619d01cb97
+        uses: chromaui/action@v1
+        with:
+          cypress: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        env:
+          STORYBOOK_FIGMA_ACCESS_TOKEN: ${{ secrets.STORYBOOK_FIGMA_ACCESS_TOKEN }}
