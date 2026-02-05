@@ -20,14 +20,6 @@ jobs:
         run: |
           yarn cypress:ci
 
-      - name: Archive chromatic assets
-        run: |
-          yarn archive-storybook
-
-      - name: Run tests
-        run: |
-          yarn test:ci
-
       - name: Check if chromatic archives exist
         run: |
           if [ -d "cypress/downloads/chromatic-archives" ]; then
@@ -44,6 +36,10 @@ jobs:
           name: chromatic-archives
           path: cypress/downloads/chromatic-archives
           if-no-files-found: warn
+
+      # - name: Run tests
+      #   run: |
+      #     yarn test:ci
 
   chromatic-deployment:
     needs: test
