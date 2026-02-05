@@ -16,6 +16,20 @@ jobs:
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
 
+      - name: Run Cypress tests
+        run: |
+          yarn cypress:ci
+
+      - name: Archive chromatic assets
+        run: |
+          yarn archive-storybook
+
       - name: Run tests
         run: |
           yarn test:ci
+
+      - name: Upload chromatic archives
+        uses: actions/upload-artifact@v3
+        with:
+          name: chromatic-archives
+          path: cypress/downloads/chromatic-archives

@@ -50,3 +50,11 @@ export const IconAndText: Story = {
     ),
   },
 }
+
+export const IconOnlyDisabled: Story = {
+  args: {
+    icon: 'cart',
+    disabled: true,
+    'aria-label': 'cart',
+  },
+}
