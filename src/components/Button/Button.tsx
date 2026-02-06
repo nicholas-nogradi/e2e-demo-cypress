@@ -27,7 +27,7 @@ const StyledButton = styled.button<{
 
     transition: box-shadow 150ms ease-in;
     z-index: 1;
-    background-color: ${clear ? color.buttonClear : color.buttonPrimary};
+    background-color: ${clear ? color.buttonClear : color.buttonSecondary};
 
     &:hover {
       cursor: pointer;
